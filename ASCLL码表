@@ -1,0 +1,9 @@
+count=0
+for i in range(32,127):
+    if i<=99:
+        print("%s=%d"%(chr(i),i),end=" "*5)
+    else:
+        print("%s=%d"%(chr(i),i),end=" "*4)
+    count+=1
+    if count%7==0:
+        print("\r")
