@@ -1,0 +1,33 @@
+from random import*
+anwser=randint(1, 50)
+
+
+print("I'm thinking of a number,guess it!")
+
+while True:
+    while True:
+        try:
+            x=float(input("Input a number:"))
+            break
+        except:
+            print("That's not a number.Please try again.")
+    
+    if anwser==x:
+        print("Congratulations!You're right!")
+        response=input('Do you want to play it again?(yes/no):')
+        while response!="yes" and response!="no":
+            response=input('Please input yes or no!\nDo you want to play it again?(yes/no):')
+        else:
+            if response=="no":
+                break
+            else:
+                anwser=randint(1, 50)
+        
+    elif x>anwser:
+        print("\nThat's too high!Try again!")
+        
+    else:
+        print("\nThat's too low!Try again!")
+
+
+print('Thanks for playing!')
