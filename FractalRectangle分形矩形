@@ -1,0 +1,26 @@
+from pylab import*
+
+def Square(x,y,n):
+    x1,x2,x3,x4=x
+    y1,y2,y3,y4=y
+    if n==2:
+        x=[x1,x2,x3,x4,x1]
+        y=[y1,y2,y3,y4,y1]
+        plot(x, y,'b')
+    else:
+        u1=x1+(x2-x1)/3 ; u2=x1+2*(x2-x1)/3
+        v1=y1+2*(y3-y1)/3 ; v2=y1+(y3-y1)/3
+        
+        Square([x1,u1,u1,x1], [y1,y1,v2,v2], n-1)
+        Square([u1,u2,u2,u1], [y1,y1,v2,v2], n-1)
+        Square([u2,x2,x2,u2], [y1,y1,v2,v2], n-1)
+        Square([u2,x2,x2,u2], [v2,v2,v1,v1], n-1)
+        Square([u2,x2,x2,u2], [v1,v1,y3,y3], n-1)
+        Square([u1,u2,u2,u1], [v1,v1,y3,y3], n-1)
+        Square([x1,u1,u1,x1], [v1,v1,y3,y3], n-1)
+        Square([x1,u1,u1,x1], [v2,v2,v1,v1], n-1)
+    
+x=[0,100,100,0]
+y=[0,0,100,100]
+Square(x, y, 6)
+show()
