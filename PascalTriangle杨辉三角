@@ -1,0 +1,23 @@
+n=int(input("输入行数："))
+line1=[]
+line2=[]
+for i in range(n):
+    if i == 0:
+        print("  "*(n-1)+"1")
+    elif i == 1:
+        line1=[1,1]
+        print("  "*(n-2)+"1"+"   "+"1")
+    else:
+        length=len(line1)
+        line2.append(1)
+        for j in range(length-1):
+            line2.append(line1[j]+line1[j+1])
+        line2.append(1)
+        
+        print("  "*(n-i-1)+"1   ",end="")
+        for k in range(len(line2)-2):
+            print(line2[k+1],end="   ")
+        print("1")
+        
+        line1=line2
+        line2=[]
