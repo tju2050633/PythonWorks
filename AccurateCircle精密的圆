@@ -1,0 +1,23 @@
+from pylab import*
+from math import*
+
+def Circla(r):
+    list_x=[]
+    list_y1=[]
+    list_y2=[]
+
+    radical=r
+    x=-r
+
+    while x <= r:
+        y=sqrt(radical**2-x**2)
+        list_x.append(x)
+        list_y1.append(y)
+        list_y2.append(-y)
+        x+=0.0001
+        
+        
+    plot(list_x,list_y1,'b')
+    plot(list_x,list_y2,'r')
+        
+Circla(1)
