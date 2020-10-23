@@ -1,0 +1,27 @@
+def partition(list,low,high):
+    #把比基准小的都放在前面，基准放在它们后面一个，这样基准前面都比他小，后面都比他大
+    pivot=list[high]
+    i=low-1
+    for j in range(low,high):
+        if list[j] < pivot:
+            i+=1
+            list[i],list[j]=list[j],list[i]
+    i+=1
+    list[i],list[high]=list[high],list[i]
+    return(i)
+    
+def quickSort(list,low,high):
+    #基准前面包括基准作为新列表重复以上函数，基准后面作为新列表重复以上函数
+    if high > low:
+        key=partition(list, low, high)
+        quickSort(list, low, key-1)
+        quickSort(list, key+1, high)
+    
+#设计low和high来分割列表，使得处理子列表时不用提出来
+list=[5，4，3，2，1]
+
+
+low=0
+high=len(list)-1
+quickSort(list,low,high)
+print(list)
