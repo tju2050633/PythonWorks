@@ -1,0 +1,98 @@
+x=float(input("请输入[0-100亿]之间的数字：\n"))+0.001 #+0.001消除进制转化带来的一分钱的误差
+y=""
+dict={1:"壹",2:"贰",3:"叁",4:"肆",5:"伍",6:"陆",7:"柒",8:"捌",9:"玖",0:"零"}
+
+yi_wei=int(x//100000000)
+wan_wei=int(x%100000000//10000)
+ge_wei=int(x%10000//1)
+xiao_shu=int(x*100%100)
+
+shi_yi=yi_wei//10
+yi=yi_wei%10
+
+qian_wan=wan_wei//1000
+bai_wan=wan_wei%1000//100
+shi_wan=wan_wei%100//10
+wan=wan_wei%10//1
+
+qian=ge_wei//1000
+bai=ge_wei%1000//100
+shi=ge_wei%100//10
+ge=ge_wei%10//1
+
+shi_fen_wei=xiao_shu//10
+bai_fen_wei=xiao_shu%10//1
+    
+if yi_wei:
+    if shi_yi:
+        if shi_yi == 1:
+            y+="十"
+        else:
+            y+=str(dict[shi_yi])+"十"
+    if yi:
+        y+=str(dict[yi])+"亿"
+    elif qian_wan and (wan_wei or ge_wei):
+        y+="亿零"
+    else:
+        y+="亿"
+    
+if wan_wei:
+    if qian_wan:
+        y+=str(dict[qian_wan])+"仟"
+    elif yi_wei:
+        y+="零"
+    if bai_wan:
+        y+=str(dict[bai_wan])+"佰"
+    elif qian_wan and (shi_wan or wan):
+        y+="零"
+    if shi_wan:
+        if shi_wan == 1:
+            y+="十"
+        else:
+            y+=str(dict[shi_wan])+"十"
+    elif bai_wan and wan:
+        y+="零"
+    if wan:
+        y+=str(dict[wan])+"万"
+    elif ge_wei and qian:
+        y+="万零"
+    else:
+        y+="万"
+    
+if ge_wei:
+    if qian:
+        y+=str(dict[qian])+"仟"
+    elif yi_wei or wan_wei:
+        y+="零"
+    if bai:
+        y+=str(dict[bai])+"佰"
+    elif qian and (shi or ge ):
+        y+="零"
+    if shi:
+        if shi == 1:
+            y+="十"
+        else:
+            y+=str(dict[shi])+"十"
+    elif bai and ge:
+        y+="零"
+    if ge:
+        y+=str(dict[ge])
+        
+if yi_wei or wan_wei or ge_wei:
+    y+="圆"
+
+if xiao_shu:
+    if shi_fen_wei:
+        y+=str(dict[shi_fen_wei])+"角"
+    elif yi_wei or wan_wei or ge_wei:
+        y+="零"
+    if bai_fen_wei:
+        y+=str(dict[bai_fen_wei])+"分"
+    else:
+        y+="整"
+elif yi_wei or wan_wei or ge_wei:
+    y+="整"
+else:
+    y+="零圆整"
+
+print("大写结果是：\n"+y)
