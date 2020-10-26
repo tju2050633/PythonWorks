@@ -1,0 +1,7 @@
+x=int(input("输入要转化成二进制的整数:"))
+y=""
+while x!=0:
+    a=x%2
+    x=x//2
+    y=str(a)+y
+print(y)B
