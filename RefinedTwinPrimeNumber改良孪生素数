@@ -1,0 +1,23 @@
+i=2
+list=[]
+                
+while i <= 1000:
+    flag=False
+    for j in range(2,i):
+        if i%j==0:
+            flag=True
+            break
+ 
+    for j in range(2,i+2):
+        if (i+2)%j==0:
+            flag=True
+            break
+    
+    if flag:
+        i+=1
+        continue
+    
+    list.append("{}、{}".format(i, i+2))
+    i+=1
+    
+print(list)
