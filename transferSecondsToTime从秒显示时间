@@ -1,0 +1,5 @@
+t=float(input('输入秒数'))
+hour=int(t//3600)
+minute=int(t%3600//60)
+second=int(t%60)
+print(str(hour)+':'+str(minute)+':'+str(second))
