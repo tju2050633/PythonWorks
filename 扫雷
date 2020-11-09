@@ -1,0 +1,44 @@
+#定义全局，输入行列数
+row=int(input("输入行数："))
+line=int(input("输入列数："))
+
+#存储实际情况和输出结果
+bombs={0:["?"]*(line+2),row+1:["?"]*(line+2)}
+show={}
+
+#输入实际情况
+for r in range(1,row+1):
+    bombs[r]=["?"]
+    
+    this_row=input("")
+    for item in this_row:
+        bombs[r]+=[item]
+    
+    bombs[r]+=["?"]
+#检测炸弹数目  
+for r in range(1,row+1):
+    show[r]=""
+    
+    for l in range(1,line+1):
+        
+        if bombs[r][l] == "*":
+            bomb_count = "*"
+        else:
+            bomb_count=0
+            for neighbor in range(l-1,l+2):
+                if bombs[r-1][neighbor] == "*":
+                    bomb_count+=1
+                if bombs[r+1][neighbor] == "*":
+                        bomb_count+=1
+            
+            if bombs[r][l-1] == "*":
+                bomb_count+=1
+            if bombs[r][l+1] == "*":
+                bomb_count+=1
+        
+        show[r]+=str(bomb_count)
+    
+#打印输出结果
+print("")
+for i in show.keys():
+    print(show[i])
