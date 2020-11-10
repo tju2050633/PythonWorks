@@ -1,0 +1,36 @@
+def PrimeCheck(num):
+    """ 质数检测 """
+    flag = False
+    for i in range(2,num):
+        if num%i == 0:
+            flag = True
+            
+    return flag
+    
+def PrimeList(num):
+    """ 生成包含小于该数字所有质数的列表 """
+    lst=[]
+    for i in range(2,num):
+        if not PrimeCheck(i):
+            lst.append(i)
+            
+    return lst
+
+num0 = int(input("输入一个整数："))
+num = num0
+factors=[]
+
+while PrimeCheck(num):
+    for i in PrimeList(num):
+        if num%i == 0:
+            factors.append(i)
+            num = int(num/i)
+            break
+    
+print(factors)
+output=str(num0)+"="
+for i in factors:
+    output += str(i)+"*"
+    
+output += str(num)
+print(output)
